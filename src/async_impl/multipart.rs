@@ -165,7 +165,7 @@ impl Form {
     }
 
     /// Generate a hyper::Body stream for a single Part instance of a Form request.
-    pub(crate) fn part_stream<T>(
+    pub fn part_stream<T>(
         &mut self,
         name: T,
         part: Part,
@@ -193,7 +193,7 @@ impl Form {
             .chain(stream::once(future::ready(Ok("\r\n".into()))))
     }
 
-    pub(crate) fn compute_length(&mut self) -> Option<u64> {
+    pub fn compute_length(&mut self) -> Option<u64> {
         self.inner.compute_length()
     }
 
